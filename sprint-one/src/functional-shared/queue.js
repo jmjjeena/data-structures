@@ -3,7 +3,6 @@ var Queue = function() {
   // but try not not reference your old code in writing the new style.
   var queueInstance = {};
   queueInstance.last = 0;
-  // queueInstance.first = 0;
   queueInstance.storage = {};
 
   _.extend(queueInstance, queueMethods);
