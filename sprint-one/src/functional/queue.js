@@ -11,14 +11,17 @@ var Queue = function() {
   //add value to back of queue
   storage[count] = value;
   count++;
+  return storage[count];
   };
 
   someInstance.dequeue = function() {
   //remove value from front of queue
   for (var key in storage) {
+    var dequeued = storage[key];
     delete storage[key];
       break; 
     }
+    return dequeued;
   };
 
   someInstance.size = function() {
@@ -34,3 +37,5 @@ var Queue = function() {
 
   return someInstance;
 };
+
+
