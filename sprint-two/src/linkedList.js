@@ -37,21 +37,14 @@ var LinkedList = function() {
   list.contains = function(target) {
     // declare current node
     var current = this.head;
-    // get value head
-    if ( current.value === target) {
-      return true;
-    } else {
-      while(current.next !== null) {
-        // check target value eauals to the value of head
-        // if not 
-        //while current not equal not next 
-        // next equal to null
-      }
+    while (current) {
+      if (current.value === target) {
+        return true;
+      } 
+      current = current.next;
     }
-    //return false
-    return false;
+    return false;    
   };
-
   return list;
 };
 
@@ -67,3 +60,7 @@ var Node = function(value) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+var newlist = LinkedList();
+newlist.addToTail(4);
+newlist.addToTail(5);
+console.log(newlist.head);
