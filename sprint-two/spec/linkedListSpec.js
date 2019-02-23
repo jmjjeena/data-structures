@@ -47,6 +47,7 @@ describe('linkedList', function() {
   it('should not contain a value that was removed', function() {
     linkedList.addToTail(4);
     linkedList.addToTail(5);
+    debugger;
     linkedList.removeHead();
     expect(linkedList.contains(4)).to.equal(false);
   });
