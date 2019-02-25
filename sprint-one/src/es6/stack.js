@@ -1,28 +1,28 @@
 class Stack {
-	constructor() {
-	this.storage = {};
- 	this.count = 0;	
-	}	
-  
+  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
+  // but try not not reference your old code in writing the new style.
+  constructor() {
+    this.count = 0;
+    this.storage = {};
+  }
 
   push(value) {
-	this.count++;
-	this.storage[this.count] = value;
-	return this.storage[this.count];
-	};
+    this.storage[this.count] = value;
+    this.count++;
+  }
 
   pop() {
-	var toPop = this.storage[this.count];
-	delete this.storage[this.count];
-	this.count--;
-	return toPop;
-	};
+    var removed = this.storage[this.count - 1];
+    delete this.storage[this.count - 1];
+    if (this.count > 0) {
+      this.count--;
+    }
+    return removed;
+  }
 
   size() {
-	if (this.count < 0) {
-		return 0;
-	} else {
-		return this.count;
-	}
-  };
-};
+    //get the length of contained data
+    return this.count;
+  }
+
+}

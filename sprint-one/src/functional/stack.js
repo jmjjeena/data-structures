@@ -9,22 +9,20 @@ var Stack = function() {
   var count = 0;
   // Implement the methods below
   someInstance.push = function(value) {
-    storage[count] = value;
-    count++;
-    return storage[count];
+    // stores data into storage
+    storage[Object.keys(storage).length] = value;
   };
 
   someInstance.pop = function() {
-    delete storage[count];
-    count--;
-    return storage[count]
+    // subtracts data from storage
+    var popped = storage[Object.keys(storage).length - 1];
+    delete storage[Object.keys(storage).length - 1];
+    return popped;
   };
 
   someInstance.size = function() {
-    if (count < 0) {
-      return 0;
-    }
-    return count;
+    //get the length of contained data
+    return Object.keys(storage).length;
   };
 
   return someInstance;

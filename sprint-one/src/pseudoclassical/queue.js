@@ -1,28 +1,24 @@
 var Queue = function() {
-	this.front = 0;
-	this.back = 0;
-	this.storage = {};
- };
-
-Queue.prototype.enqueue = function(value){
-  this.storage[this.back] = value;
-  this.back++;
+  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
+  // but try not not reference your old code in writing the new style.
+  this.last = 0;
+  this.storage = {};
 };
 
-Queue.prototype.dequeue = function(){
-  if(this.front <= this.back){
-    var toDequeue = this.storage[this.front];
-    delete this.storage[this.front];
-    this.front++;
-    return toDequeue;
-  }
+Queue.prototype.enqueue = function(value) {
+  this.storage[this.last] = value;
+  this.last++;
 };
 
-Queue.prototype.size = function(){
-	if (this.back - this.front < 0) {
-		return 0;
-	} else {
-		return this.back - this.front;
-	}
+Queue.prototype.dequeue = function() {
+  // subtracts data from storage
+  var first = Object.keys(this.storage)[0];
+  var popped = this.storage[first];
+  delete this.storage[first];
+  return popped;
+};
+
+Queue.prototype.size = function() {
+  return Object.keys(this.storage).length;
 };
 

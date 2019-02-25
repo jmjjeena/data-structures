@@ -1,35 +1,27 @@
 var Queue = function() {
-	var instance = Object.create(queueMethods);
-		instance.front = 0;
-		instance.back = 0;
-		instance.storage = {};
+  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
+  // but try not not reference your old code in writing the new style.
+  var queueInstance = Object.create(queueMethods);
+  queueInstance.last = 0;
+  queueInstance.storage = {};
 
-	return instance;
- };
-
- var queueMethods = {
- 	enqueue : function(value) {
- 		this.storage[this.back] = value;
- 		this.back++;
- 	},
-
- 	dequeue : function() {
- 		if(this.front <= this.back) {
- 			var toDelete = this.storage[this.front];
- 			delete this.storage[this.front];
- 			this.front++;
- 			return toDelete;
- 		}
- 	},
-
- 	size : function() {
- 		if (this.back - this.front < 0) {
- 			return 0;
- 		} else {
- 			return this.back - this.front;
- 		}
- 	}
- };
+  return queueInstance;
+};
 
 
+queueMethods.enqueue = function(value) {
+  this.storage[this.last] = value;
+  this.last++;
+};
 
+queueMethods.dequeue = function() {
+  // subtracts data from storage
+  var first = Object.keys(this.storage)[0];
+  var popped = this.storage[first];
+  delete this.storage[first];
+  return popped;
+};
+
+queueMethods.size = function() {
+  return Object.keys(this.storage).length;
+};

@@ -1,3 +1,4 @@
+/* eslint-disable space-before-blocks */
 var LinkedList = function() {
   var list = {};
   list.head = null;
@@ -5,38 +6,33 @@ var LinkedList = function() {
   list.counter = 0;
 
   list.addToTail = function(value) {
-    //create new node with  value 
+    // functional style
+    //create new node with value
 
     var newNode = new Node(value);
-    this.counter++;
-    if(!this.head && !this.list){
-        this.head = newNode;
-        this.tail = newNode;
+    list.counter++;
+    if (!list.head && !list.list){
+      list.head = newNode;
+      list.tail = newNode;
     } else {
-        this.tail.next = newNode;
-        this.tail = newNode;
+      list.tail.next = newNode;
+      list.tail = newNode;
     }
-    //point head and tail to the value 
-    // becuase there is only one node
-     
-    // if added another new node 
-    // head will be the first node itself and
-    // tail will be pointed to the new node
   };
 
   list.removeHead = function() {
-    //re-point head to new node
-    var removed = this.head.value;
-    this.head = this.head.next;
-    if (this.counter > 0) {
-      this.counter--
+    //re-point head to next node
+    var removed = list.head.value;
+    list.head = list.head.next;
+    if (list.counter > 0) {
+      list.counter--;
     }
     return removed;
   };
 
   list.contains = function(target) {
     // declare current node
-    var current = this.head;
+    var current = list.head;
     while (current) {
       if (current.value === target) {
         return true;
@@ -59,6 +55,10 @@ var Node = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+
+ * For addToTail(), the time complexity is Constant O(1).
+ * For removeHead(), the time complexity is Constant O(1).
+ * For contains(), the time complexity is Linear O(n).
  */
 var newlist = LinkedList();
 newlist.addToTail(4);
